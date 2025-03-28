@@ -1,1 +1,82 @@
-Hello World
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tạm Biệt Một Chặng Đường</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:700' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            background: #ffffff; color: #333; padding: 50px;
+            color: #333;
+            padding: 50px;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        #countdown {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 20px;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    color: #333;
+}
+        footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    opacity: 0.8;
+    color: #666;
+}
+a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tạm Biệt Một Chặng Đường - <a href="https://www.facebook.com/FPTUHCMConfessions">FPTU HCM Confession</a></h1>
+    <p>Hơn 17.000 lần yêu cầu – không chỉ là con số, mà là những khoảnh khắc kết nối quý giá.</p>
+    <p>Chúng ta đã đồng hành cùng nhau, chia sẻ thông tin, cảm xúc và kỷ niệm.</p>
+    <p>Nhưng mọi hành trình đều có điểm dừng, và ngày đó đang đến gần...</p>
+    <div id="countdown"></div>
+    <p>Cảm ơn bạn – vì tất cả. ❤️</p>
+
+    <footer>
+        <p>Đặc biệt cảm ơn anh <a href="https://tuhuynh.com" target="_blank">@tuhuynh</a> đã build ra website này.</p>
+    </footer>
+
+    <script>
+        function countdown(endDate) {
+            let timer = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = endDate - now;
+
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = "Còn " + days + " ngày " + hours + " giờ " + minutes + " phút ";
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "Website đã đóng cửa";
+                }
+            }, 1000);
+        }
+
+        let closingDate = new Date("2025-04-15T00:00:00").getTime();
+        countdown(closingDate);
+    </script>
+</body>
+</html>
